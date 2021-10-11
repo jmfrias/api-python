@@ -1,0 +1,6 @@
+{
+    "health" : {
+        "operation" : "health",
+        "description" : "HealthCheck"
+    }
+}
