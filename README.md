@@ -53,7 +53,7 @@ This services doesn't need other variables rather the start up port. If it's not
 In case we're using linux, we can create a file config.cfg with the following content.
 
 ````properties
-PORT=8080
+APP_PORT=8080
 DEBUG=True #--> Modo Debug. Values (True|False) )
 FLASK_ENV=development #--> Starts service on dev mode. Values (development|production) )
 PYTHONDONTWRITEBYTECODE=1 #--> Avoids creation of __py__cache directory
