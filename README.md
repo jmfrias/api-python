@@ -1,7 +1,7 @@
 <h1 style="text-align: center"> API PYTHON</h1>
 
 ## Technology
-Nodejs
+Python
 
 ## Description
 This api was created for testing purposes.
@@ -47,10 +47,10 @@ Requirement installed: flask_cors in /Library/Frameworks/Python.framework/Versio
 .
 ````
 
-## Ejecution
-This services doesn
+## Execution
+This services doesn't need other variables rather the start up port. If it's not defined, the service will start on port **5000**. However, there's a little description on the variable you might want to include according to your needs. These variables need to be defined at OS level.
 
-Este servicio no utiliza variables más allá del puerto de inicio, que en caso de no definir ninguna, este iniciara en el puerto **5000** (Puerto por default de python). Estas variables de deben definir a nivel SO. En caso de usar linux, podemos crear un archivo config.cfg con este contenido.
+In case we're using linux, we can create a file config.cfg with the following content.
 
 ````properties
 PORT=8080
@@ -89,7 +89,6 @@ To use this api we can rather access by browser using swagger, by postman or cur
     └── GET /health #--> Service status
 ````
 
-## Tests Unitarios
 ## Unit tests
 The following tests are available:
 ````bash
