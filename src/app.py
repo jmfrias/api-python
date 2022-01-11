@@ -4,6 +4,7 @@ from routes.health import healthBlueprint
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_cors import CORS, cross_origin
 import os
+import logging
 
 app = Flask(__name__)
 CORS(app)
@@ -28,6 +29,10 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 
 app.register_blueprint(swaggerui_blueprint, url_prefix="/swagger")
 app.register_blueprint(swaggerui_blueprint, url_prefix="/")
+
+LOGLEVEL = os.environ.get("LOGLEVEL", "INFO")
+logging.basicConfig(level=LOGLEVEL)
+# logging.basicConfig(level=LOGLEVEL)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=APP_PORT)
