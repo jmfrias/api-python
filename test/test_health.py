@@ -2,7 +2,7 @@ import unittest
 from http import HTTPStatus
 from flask import json
 
-from settings import app
+from app import app
 from controller.generics import readJsonFiles
 
 messages = readJsonFiles('messages', 'health')
