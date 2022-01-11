@@ -1,6 +1,3 @@
 {
-    "health" : {
-        "operation" : "health",
-        "description" : "HealthCheck"
-    }
+    "health" : "HealthCheck"
 }

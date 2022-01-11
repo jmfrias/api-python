@@ -1,3 +1,4 @@
+import logging
 from controller.generics import readJsonFiles
 from controller.logger import logger
 from models.health import Health
@@ -9,7 +10,7 @@ results = readJsonFiles('results')
 
 def healthCheck():
     modHealth = Health(messages['ok'])
-    return logger(operations['description'], results['ok'], HTTPStatus.OK , modHealth.getMessage(), [])
+    return logger(operations, results['ok'], HTTPStatus.OK , modHealth.getMessage(), [], logging.debug)
 
 if __name__ == "__main__":
     pass
