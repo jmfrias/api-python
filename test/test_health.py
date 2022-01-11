@@ -10,10 +10,6 @@ operations = readJsonFiles('operations', 'health')
 results = readJsonFiles('results')
 
 class TestHealth(unittest.TestCase):
-    def create_app(self):
-        app.config.from_object('config.TestConfig')
-        return app
-
     def test_1_health_content(self):
         print("\nTest for content_type JSON")
         tester = app.test_client(self)
