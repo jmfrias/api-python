@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 from routes.health import healthBlueprint
-
+from settings.config import DevelopmentConfig, ProductionConfig
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_cors import CORS, cross_origin
+
 import os
 import logging
 
@@ -16,9 +17,15 @@ cos = CORS(app, resources = {
 })
 
 APP_PORT = os.environ.get("APP_PORT")
+APP_SETTINGS = os.environ.get("APP_SETTINGS", 'ProductionConfig')
 
-app.config['JSON_SORT_KEYS'] = False
-app.config['CORS_HEADERS'] = 'Content-Type'
+if APP_SETTINGS == "DevelopmentConfig":
+    app.config.from_object(DevelopmentConfig)
+elif APP_SETTINGS == "ProductionConfig":
+    app.config.from_object(ProductionConfig)
+else:
+    logging.error("Wrong configuration")
+    exit(1)
 
 app.register_blueprint(healthBlueprint, url_prefix="/health")
 
@@ -32,7 +39,3 @@ app.register_blueprint(swaggerui_blueprint, url_prefix="/")
 
 LOGLEVEL = os.environ.get("LOGLEVEL", "INFO")
 logging.basicConfig(level=LOGLEVEL)
-# logging.basicConfig(level=LOGLEVEL)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=APP_PORT)

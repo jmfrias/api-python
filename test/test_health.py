@@ -1,20 +1,19 @@
 import unittest
-import os,sys,inspect
 from http import HTTPStatus
+from flask import json
 
-#Required otherwise It doesn't work.
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-
-from app import app
-from controller.generics import *
+from settings import app
+from controller.generics import readJsonFiles
 
 messages = readJsonFiles('messages', 'health')
 operations = readJsonFiles('operations', 'health')
 results = readJsonFiles('results')
 
 class TestHealth(unittest.TestCase):
+    def create_app(self):
+        app.config.from_object('config.TestConfig')
+        return app
+
     def test_1_health_content(self):
         print("\nTest for content_type JSON")
         tester = app.test_client(self)

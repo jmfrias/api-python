@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Logger:
     __logger = {
-        "date" : datetime.now(),
+        "date" : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "name" : "api-python",
         "meta" : readJsonFiles('manifest'),
         "operation" : "",
